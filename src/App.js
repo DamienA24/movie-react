@@ -1,23 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import Details from "./containers/Details";
+import Home from "./containers/Home";
+
+import {
+  BrowserRouter as Router,
+  useLocation,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Router>
+      <div className="container-app">
+        <Switch>
+          <Redirect exact path="/" to="/home" />
+          <Route path="/home">
+            <Home />
+          </Route>
+          <Route path="/details/:id">
+            <Details />
+          </Route>
+          <Route path="*">
+            <NoMatch />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+  );
+}
+
+function NoMatch() {
+  let location = useLocation();
+
+  return (
+    <div>
+      <h3>
+        No match for <code>{location.pathname}</code>
+      </h3>
     </div>
   );
 }
