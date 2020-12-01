@@ -7,7 +7,9 @@ function Details() {
   const { id } = useParams();
 
   useEffect(() => {
-    getMovieData(id);
+    if (id) {
+      getMovieData(id);
+    }
   }, []);
 
   async function getMovieData(filmId) {
@@ -25,7 +27,7 @@ function Details() {
           <img
             src={`http://image.tmdb.org/t/p/w500/${details.poster_path}`}
             className="img"
-            alt="image"
+            alt="image-details"
           />
           <div className="details">
             <div className="title">
