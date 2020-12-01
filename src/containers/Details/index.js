@@ -8,10 +8,6 @@ function Details() {
 
   useEffect(() => {
     getMovieData(id);
-
-    return () => {
-      setDetails({});
-    };
   }, []);
 
   async function getMovieData(filmId) {
@@ -29,6 +25,7 @@ function Details() {
           <img
             src={`http://image.tmdb.org/t/p/w500/${details.poster_path}`}
             className="img"
+            alt="image"
           />
           <div className="details">
             <div className="title">

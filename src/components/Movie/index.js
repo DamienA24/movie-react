@@ -7,6 +7,7 @@ const Movie = ({ movie }) => {
       <img
         src={`http://image.tmdb.org/t/p/w500/${poster_path}`}
         className="image-movie"
+        alt="image"
       />
       <div className="description">
         <div className="details truncateOverflow">
